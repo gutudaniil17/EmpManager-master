@@ -14,7 +14,6 @@ public class EmployeeRepositoryJDBCImpl implements EmployeeRepositoryJDBC {
     private final String username = "root";
     private final String password = "root";
 
-
     @Override
     public List<Employee> findAll() {
         List<Employee> result = new ArrayList<>();
@@ -57,8 +56,6 @@ public class EmployeeRepositoryJDBCImpl implements EmployeeRepositoryJDBC {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-
     }
 
     @Override
@@ -76,8 +73,6 @@ public class EmployeeRepositoryJDBCImpl implements EmployeeRepositoryJDBC {
                 result = new Employee(id1, firstName, lastName, email);
 
             }
-
-
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -87,10 +82,10 @@ public class EmployeeRepositoryJDBCImpl implements EmployeeRepositoryJDBC {
     @Override
     public void deleteById(long id) {
         String query = "delete from employees where id = " + id;
-        try(Connection conn = DriverManager.getConnection(dbURL,username,password)) {
-            conn.prepareStatement(query).executeUpdate();        }catch (SQLException ex){
+        try (Connection conn = DriverManager.getConnection(dbURL, username, password)) {
+            conn.prepareStatement(query).executeUpdate();
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
     }
 }
